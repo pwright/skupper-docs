@@ -1,0 +1,6 @@
+include::partial$shared/attributes.adoc[]
+
+= Welcome
+
+Welcome to the {skupper} version {skupper-version} documentation.
+Navigate using the left hand menu.
