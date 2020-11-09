@@ -1,0 +1,57 @@
+include::_artifacts/attributes.adoc[]
+
+//Category: skupper
+// Type: assembly
+
+[id="installing-skupper"] 
+= Installing Skupper
+
+[role="system:abstract"]
+After installing Skupper you can connect services from namespaces without opening ports.
+
+You can install Skupper using either of the following methods:
+
+* xref:installing-using-yaml[]
+* xref:installing-using-cli[]
+
+
+// Type: procedure
+[id="installing-using-yaml"] 
+== Installing Skupper using YAML
+
+[role="system:abstract"]
+Installing Skupper using YAML provides a declarative method to install Skupper.
+You can store your YAML files in source control to track and manage Skupper network changes.
+
+.Prerequisites
+
+* Access to a Kubernetes cluster
+
+. Log into your cluster.
+If you are deploying Skupper to be available for all namespaces, make sure you have `cluster-admin` privileges.
+
+. Deploy the site controller:
+
+.. To install Skupper into a single namespace, change context to that namespace and deploy the site controller using the following YAML:
++
+----
+kubectl apply -f https://raw.githubusercontent.com/skupperproject/skupper/{skupper-version}/cmd/site-controller/deploy-watch-current-ns.yaml
+----
+
+.. To install Skupper for all namespaces, deploy the site controller using the following YAML:
++
+----
+kubectl apply -f https://raw.githubusercontent.com/skupperproject/skupper/{skupper-version}/cmd/site-controller/deploy-watch-all-ns.yaml
+----
+
+// Type: procedure
+[id="installing-using-cli"] 
+== Installing Skupper using the CLI
+
+[role="system:abstract"]
+Installing Skupper using the command-line interface (CLI) provides a simple method to get started with Skupper.
+
+.Prerequisites
+
+* Access to a Kubernetes cluster
+
