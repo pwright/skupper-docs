@@ -1,0 +1,26 @@
+// Metadata created by nebel
+//
+// ConvertedFromFile: chapters/creating-a-skupper-site.adoc
+// ConversionStatus: raw
+
+[id="creating-a-skupper-site"]
+= Creating a Skupper site
+
+[role="system:abstract"]
+After creating a Skupper site you can connect services from namespaces without opening ports.
+
+.Prerequisites
+
+* You have installed Skupper.
+
+You can create a Skupper site using either of the following methods:
+
+* xref:creating-using-yaml[]
+* xref:creating-using-cli[]
+
+
+include::../../modules/skupper/proc-creating-using-yaml.adoc[leveloffset=+1]
+
+
+include::../../modules/skupper/proc-creating-using-clil.adoc[leveloffset=+1]
+

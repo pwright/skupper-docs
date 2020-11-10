@@ -1,0 +1,23 @@
+// Metadata created by nebel
+//
+// ConvertedFromFile: chapters/installing-skupper.adoc
+// ConversionStatus: raw
+
+[id="installing-skupper"]
+= Installing Skupper
+
+[role="system:abstract"]
+After installing Skupper you can create a Skupper site.
+
+You can install Skupper using either of the following methods:
+
+* xref:installing-using-yaml[]
+* xref:installing-using-cli[]
+
+
+
+include::../../modules/skupper/proc-installing-using-yaml.adoc[leveloffset=+1]
+
+
+include::../../modules/skupper/proc-installing-using-cli.adoc[leveloffset=+1]
+

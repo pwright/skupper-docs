@@ -1,0 +1,8 @@
+// Metadata created by nebel
+//
+// ConvertedFromFile: chapters/creating-a-skupper-site.adoc
+// ConversionStatus: raw
+
+[id="creating-using-yaml"]
+= Creating a Skupper site using YAML
+
