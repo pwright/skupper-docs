@@ -10,8 +10,10 @@ include::{mod-loc}attributes.adoc[]
 Using the Skupper command-line interface (CLI) allows you to create and manage Skupper sites from the context of the current namespace.
 
 
+
+// tag::installing-cli[]
 // Type: procedure
-[id="installing-using-cli"] 
+[id="installing-cli"] 
 == Installing Skupper using the CLI
 
 [role="system:abstract"]
@@ -54,6 +56,8 @@ $ mv skupper $HOME/bin
 $ skupper --version
 skupper version {skupper-version}
 ----
+
+// end::installing-cli[]
 
 
 // Type: procedure
