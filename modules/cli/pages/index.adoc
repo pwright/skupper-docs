@@ -14,7 +14,7 @@ Using the Skupper command-line interface (CLI) allows you to create and manage S
 // tag::installing-cli[]
 // Type: procedure
 [id="installing-cli"] 
-== Installing Skupper using the CLI
+== Installing the `skupper` CLI
 
 [role="system:abstract"]
 Installing Skupper using the command-line interface (CLI) provides a simple method to get started with Skupper.
@@ -31,13 +31,13 @@ Installing Skupper using the command-line interface (CLI) provides a simple meth
 For Linux:
 [subs=attributes+]
 ----
-$ curl -fL https://github.com/skupperproject/skupper/releases/download//skupper-cli-0.3.2-linux-amd64.tgz | tar -xzf -
+$ curl -fL https://github.com/skupperproject/skupper/releases/download//skupper-cli-{skupper-version}-linux-amd64.tgz | tar -xzf -
 ----
 
 For MacOS:
 [subs=attributes+]
 ----
-$ curl -fL https://github.com/skupperproject/skupper/releases/download/{skupper-version}/skupper-cli-0.3.2-mac-amd64.tgz | tar -xzf -
+$ curl -fL https://github.com/skupperproject/skupper/releases/download/{skupper-version}/skupper-cli-{skupper-version}-mac-amd64.tgz | tar -xzf -
 ----
 --
 
@@ -53,8 +53,8 @@ $ mv skupper $HOME/bin
 +
 [subs=attributes+]
 ----
-$ skupper --version
-skupper version {skupper-version}
+$ skupper version
+client version {skupper-version}
 ----
 
 // end::installing-cli[]
