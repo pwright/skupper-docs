@@ -76,6 +76,12 @@ The default settings include:
 The password for the `admin` user is stored in the `skupper-console-users` secret.
 * site name - The site name defaults to the namespace name, for example, `west`.
 
+[tabs]
+====
+Procedure::
++
+--
+
 To create a custom site:
 
 . Determine whether to provision the {skupper-name} console.
@@ -90,7 +96,7 @@ For more information on the console, see link:{using-console-link}[Using the {sk
 . Determine how to protect the {skupper-name} console.
 There are a number of `skupper` options regarding authentication for the console:
 +
---
+---
 `--console-auth <authentication-mode>`:: Set the authentication mode for the console:
 
 * `openshift` - Use OpenShift authentication, so that users who have permission to log into OpenShift and view the Project (namespace) can view the console.
@@ -100,7 +106,18 @@ There are a number of `skupper` options regarding authentication for the console
 
 `--console-user <username>`:: Username for the console user when authentication mode is set to `internal`.
 `--console-password <password>`:: Password for the console user when authentication mode is set to `internal`.
+---
+
 --
+Reference::
++
+--
+include::example$ref.txt[tags=init]
+--
+====
+
+
+
 
 // Type: procedure
 [id="linking-sites"] 
@@ -177,6 +194,13 @@ $ kubectl create deployment hello-world-backend --image quay.io/skupper/hello-wo
 +
 This step is not {skupper-name}-specific, that is, this process is unchanged from standard processes for your cluster.
 
+[tabs]
+====
+Flexible::
++
+---
+
+
 . Create a service that can communicate on the {service-network}:
 +
 --
@@ -209,18 +233,19 @@ where
 ifdef::skupper-io[]
 * `--protocol <protocol>` allows you specify the protocol you want to use, `tcp`, `http` or `http2`
 endif::[]
-
-
 --
+---
 
-[NOTE]
---
+
+Simple::
++
+---
 For simple use cases, for example if you have a one-to-one relationship between service and port, you can combine the two steps above using the `expose` option:
-
++
 ----
 $ skupper expose [deployment <name>|pods <selector>|statefulset <statefulsetname>|service <name>]
 ----
-
++
 where 
 
 * `<name>` is the name of your deployment 
@@ -232,8 +257,10 @@ Options for this command include:
 `--port <port-number>`:: Specify the port number that this service is available on the {service-network}.
 
 `--target-port <port-number>`:: Specify the port number of pods that you want to expose.
---
 
+---
+
+====
 
 // Type: reference
 [id="cli-global-options"] 

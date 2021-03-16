@@ -18,3 +18,5 @@ asciidoc:
     plantuml-server-url: 'http://www.plantuml.com/plantuml'
     plantuml-fetch-diagram: true
     mod-loc: ROOT:partial$
+  extensions:
+    - ./lib/tab-block.js

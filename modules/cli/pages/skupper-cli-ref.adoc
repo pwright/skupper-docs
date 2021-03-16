@@ -1,0 +1,9 @@
+= The `skupper` CLI reference
+
+test
+[format="csv""]
+|===
+include::example$skupper-options-help.csv[]
+|===
+
+include::example$ref.txt[]
