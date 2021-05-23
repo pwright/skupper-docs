@@ -1,6 +1,7 @@
 # requires 'npm i -g autodidact'
 autodidact openshift.adoc 
 
-cat openshift.adoc.didact.adoc | sed -E 's/:sectnums:/:image-prefix:/g' > openshift.didact.adoc
-
+asciidoctor -a data-uri -a image-prefix=./images/ openshift.adoc.didact.adoc  -o openshift.didact.md
 rm openshift.adoc.didact.adoc
+
+open openshift.didact.md
