@@ -75,6 +75,11 @@ For more information on the console, see {ConsoleLink}.
 [id="custom-sites"] 
 == Custom sites
 
+[tabs]
+====
+Procedure::
++
+--
 The default `skupper init` creates sites that satisfy typical requirements. 
 
 If you require a custom configuration, note the following options:
@@ -90,7 +95,7 @@ $ skupper init --enable-console false
 * Configuring console authentication.
 There are a number of `skupper` options regarding authentication for the console:
 +
---
+---
 `--console-auth <authentication-mode>`:: Set the authentication mode for the console:
 
 * `openshift` - Use OpenShift authentication, so that users who have permission to log into OpenShift and view the Project (namespace) can view the console.
@@ -103,7 +108,18 @@ Defaults to `admin`.
 `--console-password <password>`:: Password for the console user when authentication mode is set to `internal`.
 If not specified, a random passwords is generated.
 
+---
+
 --
+Reference::
++
+--
+include::example$ref.txt[tags=init]
+--
+====
+
+
+
 
 // Type: procedure
 [id="linking-sites"] 
@@ -117,13 +133,19 @@ Linking two sites requires a single initial directional connection. However:
 * Communication between the two sites is bidirectional, only the initial linking is directional.
 * The choice of direction for linking is typically determined by accessibility. For example, if you are linking an OpenShift Dedicated cluster with a CodeReady Containers cluster, you must link from the CodeReady Containers cluster to the OpenShift Dedicated cluster because that route is accessible. 
 
+
+[tabs]
+====
+Procedure::
++
+--
 .Procedure
 
 . Determine the direction of the link. If both clusters are publicly addressable, then the direction is not significant. If one of the clusters is addressable from the other cluster, perform step 2 below on the addressable cluster.
 
 . Generate a token on the cluster that you want to link to:
 +
---
+---
 ----
 $ skupper token create <filename> 
 ----
@@ -133,7 +155,7 @@ where `<filename>` is the name of a YAML file that is saved on your local filesy
 This file contains a key and the location of the site that created it.
 
 NOTE: Access to this file provides access to the {service-network}. Protect it appropriately.
---
+---
 
 . Use a token on the cluster that you want to connect from:
 
@@ -162,6 +184,14 @@ $ skupper link delete <link-name>
 ----
 where `<link-name>` is the name of the link specified during creation.
 
+--
+Reference::
++
+--
+include::example$ref.txt[tags=link]
+--
+====
+
 
 // Type: concept
 [id="exposing-services"] 
@@ -183,6 +213,13 @@ See xref:exposing-complex-services[] for instructions.
 === Exposing simple services on the {service-network}
 This section describes how services can be enabled for a {service-network} for simple use cases.
 
+
+[tabs]
+====
+Procedure::
++
+--
+
 .Procedure
 
 . Create a deployment, some pods, or a service in one of your sites, for example to create the backend service for the link:{getting-started-link}[tutorial]:
@@ -195,7 +232,7 @@ This step is not {skupper-name}-specific, that is, this process is unchanged fro
 
 . Create a service that can communicate on the {service-network}:
 +
---
+---
 ----
 $ skupper expose [deployment <name>|pods <selector>|statefulset <statefulsetname>|service <name>]
 ----
@@ -221,15 +258,30 @@ ifdef::skupper-io[]
 * `--protocol <protocol>` allows you specify the protocol you want to use, `tcp`, `http` or `http2`
 endif::[]
 
---
+---
 
 NOTE: If you do not specify ports, `skupper` uses the `containerPort` value of the deployment.
+
+--
+Reference::
++
+--
+include::example$ref.txt[tags=expose]
+--
+====
+
 
 // Type: procedure
 [id="exposing-complex-services"] 
 === Exposing complex services on the {service-network}
 
 This section describes how services can be enabled for a {service-network} for more complex use cases.
+
+[tabs]
+====
+Procedure::
++
+--
 
 .Procedure
 
@@ -243,7 +295,7 @@ This step is not {skupper-name}-specific, that is, this process is unchanged fro
 
 . Create a service that can communicate on the {service-network}:
 +
---
+---
 ----
 $ skupper service create <name> <port>
 ----
@@ -258,12 +310,11 @@ For the example deployment in step 1, you create a service using the following c
 $ skupper service create hello-world-backend 8080
 ----
 
-
---
+---
 
 . Bind the service to a cluster service:
 +
---
+---
 ----
 $ skupper service bind <service-name> <target-type> <target-name>
 ----
@@ -285,9 +336,14 @@ For the example deployment in step 1, you bind the service using the following c
 $ skupper service bind hello-world-backend deployment hello-world-backend
 ----
 
-
+---
 --
-
+Reference::
++
+--
+include::example$ref.txt[tags=servicecreate;servicebind]
+--
+====
 
 // Type: reference
 [id="cli-global-options"] 
