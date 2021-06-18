@@ -1,0 +1,23 @@
+init ,Initialise skupper installation
+token create ,Create a connection token. The 'link create' command uses the token to establish a link from a remote Skupper site.
+link ,Manage skupper links definitions
+link create ,Links this skupper installation to that which issued the specified connectionToken
+link delete ,Remove specified link
+link status ,Check whether a link to another Skupper site is active
+expose ,Expose a set of pods through a Skupper address
+service ,Manage skupper service definitions
+service bind ,Bind a target to a service
+service create ,Create a skupper service
+service delete ,Delete a skupper service
+service status ,List services exposed over the Skupper network
+service unbind ,Unbind a target from a service
+unexpose ,Unexpose a set of pods previously exposed through a Skupper address
+delete ,Delete skupper installation
+help ,Help about any command
+completion ,Output shell completion code for bash
+update ,Update skupper installation version
+debug dump ,Collect and save skupper logs and configuration
+status ,Report the status of the current Skupper site
+version ,Report the version of the Skupper CLI and services
+
+

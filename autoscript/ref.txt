@@ -1,0 +1,445 @@
+[id=init]
+== The skupper 'init' option
+// tag::init[]
+----
+Setup a router and other supporting objects to provide a functional skupper
+installation that can then be connected to other skupper installations
+
+Usage:
+  skupper init [flags]
+
+Flags:
+      --site-name string                     Provide a specific name for this skupper installation
+      --enable-console                       Enable skupper console (default true)
+      --console-auth string                  Authentication mode for console(s). One of: 'openshift', 'internal', 'unsecured'
+      --console-user string                  Skupper console user. Valid only when --console-auth=internal
+      --console-password string              Skupper console user. Valid only when --console-auth=internal
+      --ingress string                       Setup Skupper ingress to one of: [loadbalancer|route|none]. If not specified route is used when available, otherwise loadbalancer is used.
+      --console-ingress string               Determines if/how console is exposed outside cluster. If not specified uses value of --ingress. One of: [loadbalancer|route|none].
+      --router-mode string                   Skupper router-mode (default "interior")
+      --annotations strings                  Annotations to add to skupper pods
+      --labels strings                       Labels to add to skupper pods
+      --enable-service-sync                  Participate in cross-site service synchronization (default true)
+      --enable-router-console                Enable router console
+      --router-logging string                Logging settings for router (e.g. trace,debug,info,notice,warning,error)
+      --router-debug-mode string             Enable debug mode for router ('valgrind' or 'gdb' are valid values)
+      --router-cpu string                    CPU request for router pods
+      --router-memory string                 Memory request for router pods
+      --router-node-selector string          Node selector to control placement of router pods
+      --router-pod-affinity string           Pod affinity label matches to control placement of router pods
+      --router-pod-antiaffinity string       Pod antiaffinity label matches to control placement of router pods
+      --controller-cpu string                CPU request for controller pods
+      --controller-memory string             Memory request for controller pods
+      --controller-node-selector string      Node selector to control placement of controller pods
+      --controller-pod-affinity string       Pod affinity label matches to control placement of controller pods
+      --controller-pod-antiaffinity string   Pod antiaffinity label matches to control placement of controller pods
+  -h, --help                                 help for init
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::init[]
+[id=tokencreate]
+== The skupper 'token create' option
+// tag::tokencreate[]
+----
+Create a connection token.  The 'link create' command uses the token to establish a link from a remote Skupper site.
+
+Usage:
+  skupper token create <output-token-file> [flags]
+
+Flags:
+  -h, --help          help for create
+      --name string   Provide a specific identity as which connecting skupper installation will be authenticated (default "skupper")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::tokencreate[]
+[id=link]
+== The skupper 'link' option
+// tag::link[]
+----
+Manage skupper links definitions
+
+Usage:
+  skupper link [command]
+
+Available Commands:
+  create      Links this skupper installation to that which issued the specified connectionToken
+  delete      Remove specified link
+  status      Check whether a link to another Skupper site is active
+
+Flags:
+  -h, --help   help for link
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+
+Use "skupper link [command] --help" for more information about a command.
+----
+// end::link[]
+[id=linkcreate]
+== The skupper 'link create' option
+// tag::linkcreate[]
+----
+Links this skupper installation to that which issued the specified connectionToken
+
+Usage:
+  skupper link create <input-token-file> [flags]
+
+Flags:
+      --cost int32    Specify a cost for this connection. (default 1)
+  -h, --help          help for create
+      --name string   Provide a specific name for the connection (used when removing it with disconnect)
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::linkcreate[]
+[id=linkdelete]
+== The skupper 'link delete' option
+// tag::linkdelete[]
+----
+Remove specified link
+
+Usage:
+  skupper link delete <name> [flags]
+
+Flags:
+  -h, --help   help for delete
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::linkdelete[]
+[id=linkstatus]
+== The skupper 'link status' option
+// tag::linkstatus[]
+----
+Check whether a link to another Skupper site is active
+
+Usage:
+  skupper link status [<connection-name>] [flags]
+
+Flags:
+  -h, --help       help for status
+      --wait int   The number of seconds to wait for connections to become active (default 1)
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::linkstatus[]
+[id=expose]
+== The skupper 'expose' option
+// tag::expose[]
+----
+Expose a set of pods through a Skupper address
+
+Usage:
+  skupper expose [deployment <name>|pods <selector>|statefulset <statefulsetname>|service <name>] [flags]
+
+Flags:
+      --address string                  The Skupper address to expose
+      --headless                        Expose through a headless service (valid only for a statefulset target)
+  -h, --help                            help for expose
+      --port int                        The port to expose on
+      --protocol string                 The protocol to proxy (tcp, http, or http2) (default "tcp")
+      --proxy-cpu string                CPU request for router pods
+      --proxy-memory string             Memory request for router pods
+      --proxy-node-selector string      Node selector to control placement of router pods
+      --proxy-pod-affinity string       Pod affinity label matches to control placement of router pods
+      --proxy-pod-antiaffinity string   Pod antiaffinity label matches to control placement of router pods
+      --target-port int                 The port to target on pods
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::expose[]
+[id=service]
+== The skupper 'service' option
+// tag::service[]
+----
+Manage skupper service definitions
+
+Usage:
+  skupper service [command]
+
+Available Commands:
+  bind        Bind a target to a service
+  create      Create a skupper service
+  delete      Delete a skupper service
+  status      List services exposed over the Skupper network
+  unbind      Unbind a target from a service
+
+Flags:
+  -h, --help   help for service
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+
+Use "skupper service [command] --help" for more information about a command.
+----
+// end::service[]
+[id=servicebind]
+== The skupper 'service bind' option
+// tag::servicebind[]
+----
+Bind a target to a service
+
+Usage:
+  skupper service bind <service-name> <target-type> <target-name> [flags]
+
+Flags:
+  -h, --help              help for bind
+      --protocol string   The protocol to proxy (tcp, http or http2).
+      --target-port int   The port the target is listening on.
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::servicebind[]
+[id=servicecreate]
+== The skupper 'service create' option
+// tag::servicecreate[]
+----
+Create a skupper service
+
+Usage:
+  skupper service create <name> <port> [flags]
+
+Flags:
+      --aggregate string   The aggregation strategy to use. One of 'json' or 'multipart'. If specified requests to this service will be sent to all registered implementations and the responses aggregated.
+      --event-channel      If specified, this service will be a channel for multicast events.
+  -h, --help               help for create
+      --mapping string     The mapping in use for this service address (currently one of tcp or http) (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::servicecreate[]
+[id=servicedelete]
+== The skupper 'service delete' option
+// tag::servicedelete[]
+----
+Delete a skupper service
+
+Usage:
+  skupper service delete <name> [flags]
+
+Flags:
+  -h, --help   help for delete
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::servicedelete[]
+[id=servicestatus]
+== The skupper 'service status' option
+// tag::servicestatus[]
+----
+List services exposed over the Skupper network
+
+Usage:
+  skupper service status [flags]
+
+Flags:
+  -h, --help   help for status
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::servicestatus[]
+[id=serviceunbind]
+== The skupper 'service unbind' option
+// tag::serviceunbind[]
+----
+Unbind a target from a service
+
+Usage:
+  skupper service unbind <service-name> <target-type> <target-name> [flags]
+
+Flags:
+  -h, --help   help for unbind
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::serviceunbind[]
+[id=unexpose]
+== The skupper 'unexpose' option
+// tag::unexpose[]
+----
+Unexpose a set of pods previously exposed through a Skupper address
+
+Usage:
+  skupper unexpose [deployment <name>|pods <selector>|statefulset <statefulsetname>|service <name>] [flags]
+
+Flags:
+      --address string   Skupper address the target was exposed as
+  -h, --help             help for unexpose
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::unexpose[]
+[id=delete]
+== The skupper 'delete' option
+// tag::delete[]
+----
+delete will delete any skupper related objects from the namespace
+
+Usage:
+  skupper delete [flags]
+
+Flags:
+  -h, --help   help for delete
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::delete[]
+[id=help]
+== The skupper 'help' option
+// tag::help[]
+----
+Help provides help for any command in the application.
+Simply type skupper help [path to command] for full details.
+
+Usage:
+  skupper help [command] [flags]
+
+Flags:
+  -h, --help   help for help
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::help[]
+[id=completion]
+== The skupper 'completion' option
+// tag::completion[]
+----
+
+Output shell completion code for bash.
+The shell code must be evaluated to provide interactive
+completion of skupper commands.  This can be done by sourcing it from
+the .bash_profile. i.e.: $ source <(skupper completion)
+
+Usage:
+  skupper completion [flags]
+
+Flags:
+  -h, --help   help for completion
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::completion[]
+[id=update]
+== The skupper 'update' option
+// tag::update[]
+----
+Update the skupper site to 0.6.0-redhat-1
+
+Usage:
+  skupper update [flags]
+
+Flags:
+      --force-restart   Restart skupper daemons even if image tag is not updated
+  -h, --help            help for update
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::update[]
+[id=debugdump]
+== The skupper 'debug dump' option
+// tag::debugdump[]
+----
+Collect and save skupper logs, config, etc.
+
+Usage:
+  skupper debug dump <filename> [flags]
+
+Flags:
+  -h, --help   help for dump
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::debugdump[]
+[id=status]
+== The skupper 'status' option
+// tag::status[]
+----
+Report the status of the current Skupper site
+
+Usage:
+  skupper status [flags]
+
+Flags:
+  -h, --help   help for status
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::status[]
+[id=version]
+== The skupper 'version' option
+// tag::version[]
+----
+Report the version of the Skupper CLI and services
+
+Usage:
+  skupper version [flags]
+
+Flags:
+  -h, --help   help for version
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::version[]

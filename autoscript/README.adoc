@@ -1,0 +1,27 @@
+= Autoscript
+
+Autoscript allows you specify a set of commands and produce documented output.
+
+First use case is to capture the skupper cli help, here's what we specified in skupper-options-help.csv:
+
+[format="csv""]
+|===
+include::skupper-options-help.csv[]
+|===
+----
+include::skupper-options-help.sh[]
+----
+
+Run it:
+----
+$ ./skupper-options-help.sh > ref.txt
+----
+
+test
+
+== version
+----
+include::ref.txt[tags=version]
+----
+
+regex used :   ([A-Z]) -> ,$1

@@ -24,3 +24,5 @@ asciidoc:
     skupper-io: '@'
     kubernetes-flavor: Kubernetes@
     example-directory: k8s@
+  extensions:
+    - ./lib/tab-block.js
