@@ -5,4 +5,4 @@
 include::skupper-options-help.csv[]
 |===
 
-include::ref.txt[]
+include::ref.adoc[]

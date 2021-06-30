@@ -114,7 +114,7 @@ If not specified, a random passwords is generated.
 Reference::
 +
 --
-include::example$ref.txt[tags=init]
+include::example$ref.adoc[tags=init]
 --
 ====
 
@@ -188,7 +188,7 @@ where `<link-name>` is the name of the link specified during creation.
 Reference::
 +
 --
-include::example$ref.txt[tags=link]
+include::example$ref.adoc[tags=link]
 --
 ====
 
@@ -266,7 +266,7 @@ NOTE: If you do not specify ports, `skupper` uses the `containerPort` value of t
 Reference::
 +
 --
-include::example$ref.txt[tags=expose]
+include::example$ref.adoc[tags=expose]
 --
 ====
 
@@ -341,7 +341,7 @@ $ skupper service bind hello-world-backend deployment hello-world-backend
 Reference::
 +
 --
-include::example$ref.txt[tags=servicecreate;servicebind]
+include::example$ref.adoc[tags=servicecreate;servicebind]
 --
 ====
 

@@ -374,7 +374,7 @@ Global Flags:
 == The skupper 'update' option
 // tag::update[]
 ----
-Update the skupper site to 0.6.0-redhat-1
+Update the skupper site to 0c3afc7
 
 Usage:
   skupper update [flags]
@@ -443,3 +443,226 @@ Global Flags:
   -n, --namespace string    The Kubernetes namespace to use
 ----
 // end::version[]
+[id=proxy]
+== The skupper 'proxy' option
+// tag::proxy[]
+----
+Manage skupper proxy definitions
+
+Usage:
+  skupper proxy [command]
+
+Available Commands:
+  bind        Bind a service process via proxy to a skupper service
+  delete      Remove the proxy definition and stop local instance if running
+  download    Download a proxy definition
+  expose      Expose a service process via proxy through a skupper address
+  forward     Forward a service address via proxy to the skupper network
+  init        Initialize a proxy to link to the skupper network
+  status      Report the status of a proxy for the current skupper site
+  unbind      Unbind the service process from the skupper network
+  unexpose    Unexpose a service process previously exposed via proxy through a skupper address
+  unforward   Stop forwarding a service address via proxy to the skupper network
+
+Flags:
+  -h, --help   help for proxy
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+
+Use "skupper proxy [command] --help" for more information about a command.
+----
+// end::proxy[]
+[id=proxybind]
+== The skupper 'proxy bind' option
+// tag::proxybind[]
+----
+Bind a service process via proxy to a skupper service
+
+Usage:
+  skupper proxy bind <proxy-name> <address> <host> <port> [flags]
+
+Flags:
+  -h, --help              help for bind
+      --protocol string   The protocol to proxy (tcp, http or http2). (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxybind[]
+[id=proxydelete]
+== The skupper 'proxy delete' option
+// tag::proxydelete[]
+----
+Remove the proxy definition and stop local instance if running
+
+Usage:
+  skupper proxy delete <name> [flags]
+
+Flags:
+  -h, --help   help for delete
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxydelete[]
+[id=proxydownload]
+== The skupper 'proxy download' option
+// tag::proxydownload[]
+----
+Download a proxy definition
+
+Usage:
+  skupper proxy download <name> <output-path> [flags]
+
+Flags:
+  -h, --help   help for download
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxydownload[]
+[id=proxyexpose]
+== The skupper 'proxy expose' option
+// tag::proxyexpose[]
+----
+Expose a service process via proxy through a skupper address
+
+Usage:
+  skupper proxy expose <address> <host> <port> [flags]
+
+Flags:
+  -h, --help              help for expose
+      --name string       The name of external service to create. Defaults to service address value
+      --protocol string   The protocol to proxy (tcp, http or http2). (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyexpose[]
+[id=proxyforward]
+== The skupper 'proxy forward' option
+// tag::proxyforward[]
+----
+Forward a service address via proxy to the skupper network
+
+Usage:
+  skupper proxy forward <proxy-name> <address> <port> [flags]
+
+Flags:
+      --aggregate string   The aggregation strategy to use. One of 'json' or 'multipart'. If specified requests to this service will be sent to all registered implementations and the responses aggregated.
+      --event-channel      If specified, this service will be a channel for multicast events.
+  -h, --help               help for forward
+      --loopback           Forward from loopback only
+      --mapping string     The mapping in use for this service address (currently one of tcp or http) (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyforward[]
+[id=proxyinit]
+== The skupper 'proxy init' option
+// tag::proxyinit[]
+----
+Initialize a proxy to link to the skupper network
+
+Usage:
+  skupper proxy init [flags]
+
+Flags:
+  -h, --help          help for init
+      --name string   The name of proxy definition
+      --start-proxy   Start local proxy instance (default true)
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyinit[]
+[id=proxystatus]
+== The skupper 'proxy status' option
+// tag::proxystatus[]
+----
+Report the status of a proxy for the current skupper site
+
+Usage:
+  skupper proxy status <proxy-name> [flags]
+
+Flags:
+  -h, --help   help for status
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxystatus[]
+[id=proxyunbind]
+== The skupper 'proxy unbind' option
+// tag::proxyunbind[]
+----
+Unbind the service process from the skupper network
+
+Usage:
+  skupper proxy unbind <proxy-name> <address> [flags]
+
+Flags:
+  -h, --help              help for unbind
+      --protocol string   The protocol to proxy (tcp, http or http2). (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyunbind[]
+[id=proxyunexpose]
+== The skupper 'proxy unexpose' option
+// tag::proxyunexpose[]
+----
+Unexpose a service process previously exposed via proxy through a skupper address
+
+Usage:
+  skupper proxy unexpose <name> <address> [flags]
+
+Flags:
+  -h, --help   help for unexpose
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyunexpose[]
+[id=proxyunforward]
+== The skupper 'proxy unforward' option
+// tag::proxyunforward[]
+----
+Stop forwarding a service address via proxy to the skupper network
+
+Usage:
+  skupper proxy unforward <proxy-name> <address> [flags]
+
+Flags:
+  -h, --help              help for unforward
+      --protocol string   The protocol to proxy (tcp, http or http2). (default "tcp")
+
+Global Flags:
+  -c, --context string      The kubeconfig context to use
+      --kubeconfig string   Path to the kubeconfig file to use
+  -n, --namespace string    The Kubernetes namespace to use
+----
+// end::proxyunforward[]

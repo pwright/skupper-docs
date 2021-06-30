@@ -19,5 +19,17 @@ update ,Update skupper installation version
 debug dump ,Collect and save skupper logs and configuration
 status ,Report the status of the current Skupper site
 version ,Report the version of the Skupper CLI and services
+proxy, Manage skupper proxy definitions
+proxy bind, Bind a service process via proxy to a skupper service
+proxy delete, Remove the proxy definition and stop local instance if running
+proxy download, Download a proxy definition
+proxy expose, Expose a service process via proxy through a skupper address
+proxy forward, Forward a service address via proxy to the skupper network
+proxy init, Initialize a proxy to link to the skupper network
+proxy status, Report the status of a proxy for the current skupper site
+proxy unbind, Unbind the service process from the skupper network
+proxy unexpose, Unexpose a service process previously exposed via proxy through a skupper address
+proxy unforward, Stop forwarding a service address via proxy to the skupper network
+
 
 

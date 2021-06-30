@@ -14,14 +14,14 @@ include::skupper-options-help.sh[]
 
 Run it:
 ----
-$ ./skupper-options-help.sh > ref.txt
+$ ./skupper-options-help.sh > ../modules/cli/pages/ref.adoc
 ----
 
 test
 
 == version
 ----
-include::ref.txt[tags=version]
+include::ref.adoc[tags=version]
 ----
 
 regex used :   ([A-Z]) -> ,$1
