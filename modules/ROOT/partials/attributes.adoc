@@ -15,7 +15,6 @@
 //:imagesdir: _images
 
 
-
 // name and version
 :skupper-name: Skupper
 :service-network: service network
