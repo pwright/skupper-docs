@@ -1,0 +1,17 @@
+@command
+def playbook(app):
+    """
+    Insert attributes into playbook
+    """
+    attFile = "modules/ROOT/partials/attributes.adoc"
+    playbookFile ="preview-playbook.yml"
+    temp = read("preview-playbook.template")
+    write(playbookFile,temp)
+
+
+    content=read_lines(attFile)
+    
+    for i in content:
+        if i.startswith(':'):
+            notice(i)
+            append(playbookFile,replace(i,':','    ',1))

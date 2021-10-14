@@ -16,6 +16,7 @@ ui:
 
 asciidoc:
   attributes:
+    attribute-missing: drop
     plantuml-server-url: 'http://www.plantuml.com/plantuml'
     plantuml-fetch-diagram: true
     mod-loc: ROOT:partial$
@@ -24,3 +25,27 @@ asciidoc:
     skupper-io: '@'
     kubernetes-flavor: Kubernetes@
     example-directory: k8s@
+    skupper-name: Skupper
+    service-network: service network
+    skupper-version: 0.7.0
+    skupper-cli-version: v{skupper-version}
+    SkupperOperatorName: Skupper Operator
+    version:
+    linux-download-url-skupper-cli: https://github.com/skupperproject/skupper/releases/download/{skupper-version}/skupper-cli-{skupper-version}-linux-amd64.tgz
+    mac-download-url-skupper-cli: https://github.com/skupperproject/skupper/releases/download/{skupper-version}/skupper-cli-{skupper-version}-mac-amd64.tgz
+    GettingStartedLink: link:https://skupper.io/start/index.html[Getting started]
+    linkroot: /skupper/latest/
+    OpenShiftTutoriallink: link:{linkroot}cli/openshift.html[Creating a service network with OpenShift]
+    GatewayTutoriallink: link:{linkroot}cli/openshift-gateway.html[Creating a service network with OpenShift and accessing a database using a Skupper gateway]
+    OverviewLink: link:{linkroot}overview/index.html[Overview]
+    RoutingLink: link:{linkroot}overview/routing.html[Skupper routing]
+    SecurityLink: link:{linkroot}overview/security.html[Skupper security]
+    ConnectivityLink: link:{linkroot}overview/connectivity.html[Skupper connectivity]
+    DeclarativeLink: link:{linkroot}declarative/index.html[Configuring Skupper sites using YAML]
+    CliLink: link:{linkroot}cli/index.html[Configuring Skupper sites using the CLI]
+    ConsoleLink: link:{linkroot}console/index.html[Monitoring Skupper sites using the console]
+    OperatorLink: link:{linkroot}operator/index.html[Configuring Skupper sites using the Operator on Kubernetes]
+    OperatorOCPLink: link:{linkroot}operator/openshift.html[Configuring Skupper sites using the Operator on OpenShift]
+    TokensLink: link:{linkroot}overview/tokens.html[Using Skupper tokens]
+    context: skupper
+
