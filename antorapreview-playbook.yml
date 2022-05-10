@@ -10,11 +10,14 @@ content:
 
 ui:
   bundle:
-    url: ./ui-preview-bundle.zip
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
-  supplemental_files: ./supplemental_ui
+  supplemental_files: ./node_modules/@antora/lunr-extension/supplemental_ui
 
 asciidoc:
   attributes:
     skupper-preview: true
     skupper-io: '@'
+antora:
+  extensions:
+    - '@antora/lunr-extension'

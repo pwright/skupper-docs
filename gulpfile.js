@@ -7,7 +7,7 @@ const { reload: livereload } = process.env.LIVERELOAD === 'true' ? require('gulp
 const { series, src, watch } = require('gulp')
 const yaml = require('js-yaml')
 
-const playbookFilename = 'preview-playbook.yml'
+const playbookFilename = 'antorapreview-playbook.yml'
 const playbook = yaml.safeLoad(fs.readFileSync(playbookFilename, 'utf8'))
 const outputDir = (playbook.output || {}).dir || './build/site'
 const serverConfig = { name: 'Preview Site', livereload, port: 5000, root: outputDir}
