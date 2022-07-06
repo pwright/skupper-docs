@@ -42,3 +42,10 @@ npm install
 ----
 LIVERELOAD=true gulp
 ----
+
+.Notes
+
+The following Antora modules are generated:
+
+* `modules/cli-reference` - see https://github.com/pwright/skupper/tree/doc-generate
+* `modules/examples` - see 
