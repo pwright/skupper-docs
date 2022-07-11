@@ -12,10 +12,10 @@ Using YAML files to configure {skupper-name} allows you to use source control to
 
 // Type: procedure
 [id="installing-using-yaml"] 
-== Installing {skupper-name} using YAML
+== Creating a {skupper-name} site using YAML
 
 [role="system:abstract"]
-Installing {skupper-name} using YAML provides a declarative method to install {skupper-name}.
+Installing {skupper-name} using YAML provides a declarative method to create a {skupper-name} site.
 You can store your YAML files in source control to track and manage {skupper-name} network changes.
 
 .Prerequisites
@@ -55,21 +55,6 @@ NAME                                       READY   STATUS    RESTARTS   AGE
 skupper-site-controller-84694bdbb5-n8slb   1/1     Running   0          75s
 ----
 
-// Type: procedure
-[id="creating-using-yaml"] 
-== Creating a {skupper-name} site using YAML
-
-
-[role="system:abstract"]
-Using YAML files to create {skupper-name} sites allows you to use source control to track and manage {skupper-name} network changes.
-
-.Prerequisites
-
-* {skupper-name} is installed in the cluster or namespace you want to target
-* You are logged into the cluster
-
-.Procedure
-
 . Create a YAML file to define the site, for example, `my-site.yaml`:
 +
 ----
@@ -108,33 +93,32 @@ See the xref:yaml-reference[] section for more reference.
 [role="system:abstract"]
 Using YAML files to configure {skupper-name} requires that you understand all the fields so that you provision the site you require.
 
-The following YAML defines a {skupper-name} site:
+The following YAML items define a {skupper-name} site:
 
-----
-apiVersion: v1
-data:
-  cluster-local: "false" //<.>
-  console: "true" //<.>
-  console-authentication: internal //<.>
-  console-user: "username" //<.>
-  console-password: "password" //<.>
-  edge: "false" //<.>
-  name: my-site //<.>
-  router-console: "true" //<.>
-  service-controller: "true" //<.>
+cluster-local:: Only accept connections from within the local cluster, defaults to `false`.
+
+console:: Enables the skupper console, defaults to `true`.
+
+console-authentication:: Specifies the skupper console authentication method. The options are `openshift`, `internal`, `unsecured`.
+
+console-user::  Username for the `internal` authentication option.
+console-password::  Password for the `internal` authentication option.
+
+// edge: Specifies whether an edge site is created, defaults to `false`.
+
+name:: Specifies the name of the {skupper-name} site, defaults to namespace name.
+
+// router-console::  Enables the skupper console, defaults to `true`.
+service-controller:: Enables the skupper console, defaults to `true`.
   service-sync: "true" //<.>
 kind: ConfigMap
 metadata:
   name: skupper-site //<.>
 ----
 
-<.> Only accept connections from within the local cluster, defaults to `false`.
-
-<.> Enables the skupper console, defaults to `true`.
-
 <.> Specifies the skupper console authentication method. The options are `openshift`, `internal`, `unsecured`.
 
-<.> Username for the `internal` authentication option.
+<.>
 
 <.> Password for the `internal` authentication option.
 
