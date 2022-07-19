@@ -5,9 +5,9 @@ include::{mod-loc}attributes.adoc[]
 [id="skupper-declarative"] 
 = Configuring {skupper-name} sites using YAML
 
-
-[role="system:abstract"]
 Using YAML files to configure {skupper-name} allows you to use source control to track and manage {skupper-name} network changes.
+
+This procedure provides an alternative to the `skupper init` command described in xref:cli:index.adoc[].
 
 
 // Type: procedure
@@ -20,7 +20,7 @@ You can store your YAML files in source control to track and manage {skupper-nam
 
 .Prerequisites
 
-* Access to a Kubernetes cluster
+* Access to a {kubernetes-flavor} cluster
 
 .Procedure
 
@@ -63,8 +63,8 @@ data:
   cluster-local: "false"
   console: "true"
   console-authentication: internal
-  console-password: "rubble"
-  console-user: "barney"
+  console-user: "admin"
+  console-password: "changeme"
   edge: "true"
   name: my-site
   router-console: "true"
@@ -81,9 +81,9 @@ metadata:
 kubectl apply -f ~/my-site.yml
 ----
 
-.Additional resources
+.Additional information
 
-See the xref:yaml-reference[] section for more reference.
+* See the xref:yaml-reference[] section for more options.
 
 
 // Type: reference
@@ -95,39 +95,57 @@ Using YAML files to configure {skupper-name} requires that you understand all th
 
 The following YAML items define a {skupper-name} site:
 
+// # Core
+
+
+name:: Specifies the name of the {skupper-name} site, defaults to namespace name.
+The equivalent `skupper init` option is `--site-name=west`.
+
+// router-mode:: edge or interior
+
+ingress:: Specifies the ingress type, one of: [route|loadbalancer|nodeport|nginx-ingress-v1|contour-http-proxy|ingress|none]. If not specified route is used when available, otherwise loadbalancer is used.
+
+
+site.ingress-annotations:: Specify annotations to the ingress.
+The equivalent `skupper init` option is --ingress-annotations.
+
+ingress-host:: Hostname or alias by which the ingress route or proxy can be reached.
+The equivalent `skupper init` option is --ingress-host.
+
+create-network-policy:: Restrict service access to site namespace.
+The equivalent `skupper init` option is --create-network-policy.
+
+routers:: Number of router replicas to start.
+The equivalent `skupper init` option is --routers.
+
+// # Console
+
+
 cluster-local:: Only accept connections from within the local cluster, defaults to `false`.
+There is no equivalent `skupper init` option.
 
 console:: Enables the skupper console, defaults to `true`.
+The equivalent `skupper init` option is `--enable-console=true`.
 
 console-authentication:: Specifies the skupper console authentication method. The options are `openshift`, `internal`, `unsecured`.
+The equivalent `skupper init` option is `--console-auth=internal`.
 
 console-user::  Username for the `internal` authentication option.
+The equivalent `skupper init` option is `--console-user=admin`.
+
 console-password::  Password for the `internal` authentication option.
+The equivalent `skupper init` option is `--console-password=changeme`.
+
+
 
 // edge: Specifies whether an edge site is created, defaults to `false`.
 
-name:: Specifies the name of the {skupper-name} site, defaults to namespace name.
 
 // router-console::  Enables the skupper console, defaults to `true`.
-service-controller:: Enables the skupper console, defaults to `true`.
-  service-sync: "true" //<.>
-kind: ConfigMap
-metadata:
-  name: skupper-site //<.>
-----
 
-<.> Specifies the skupper console authentication method. The options are `openshift`, `internal`, `unsecured`.
+service-controller:: Enables the service controller, defaults to `true`.
+There is no equivalent `skupper init` option.
 
-<.>
 
-<.> Password for the `internal` authentication option.
-
-<.> Specifies whether an edge site is created, defaults to `false`.
-
-<.> Specifies the site name.
-
-<.> Enables the router console, defaults to `false`.
-
-<.> Specifies whether the service controller runs, defaults to `true`.
-
-<.> Specifies whether the services are synchronized across the {service-network}, defaults to `true`.
+service-sync:: Specifies whether the services exposed on this site are synchronized across the {service-network}, defaults to `true`.
+There is no equivalent `skupper init` option.
