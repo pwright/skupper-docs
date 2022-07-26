@@ -120,10 +120,6 @@ The equivalent `skupper init` option is --routers.
 
 // # Console
 
-
-cluster-local:: Only accept connections from within the local cluster, defaults to `false`.
-There is no equivalent `skupper init` option.
-
 console:: Enables the skupper console, defaults to `true`.
 The equivalent `skupper init` option is `--enable-console=true`.
 
@@ -136,7 +132,12 @@ The equivalent `skupper init` option is `--console-user=admin`.
 console-password::  Password for the `internal` authentication option.
 The equivalent `skupper init` option is `--console-password=changeme`.
 
+console-ingress:: Determines if/how console is exposed outside cluster. If not specified uses value of --ingress. One of: [route|loadbalancer|nodeport|nginx-ingress-v1|contour-http-proxy|ingress|none].
+The equivalent `skupper init` option is `--console-ingress`.
 
+
+cluster-local:: Only accept connections from within the local cluster, defaults to `false`.
+There is no equivalent `skupper init` option.
 
 // edge: Specifies whether an edge site is created, defaults to `false`.
 
