@@ -1,5 +1,35 @@
 = Skupper Documentation
 
+NOTE: Short admonitions display well.
+
+[IMPORTANT]
+.Optional Title doesn't display
+====
+An admonition that contains complex content, such as (but not limited to):
+
+* Lists
+* Multiple paragraphs
+* Source code
+* Images
+
+Doesn't display as well, but can be updated.
+
+To test the system:
+
+[bash]
+----
+asciidoctorjs --template-dir supplemental_ui/templates/ README.adoc 
+----
+
+To install asciidoctor js:
+
+----
+npm i -g asciidoctor
+----
+
+====
+
+
 This repo is used to document Skupper using https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] markup and https://docs.antora.org/[Antora].
 
 Each Skupper function is an Antora module as seen at:
