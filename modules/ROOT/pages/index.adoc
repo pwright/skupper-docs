@@ -1,5 +1,10 @@
 = Preview homepage
 
+
+{status}
+
+// drat: we need to talk about Y.
+
 This is a preview of link:https://github.com/skupperproject/skupper-docs[skupperproject/skupper-docs: Documentation for the Skupper project] 
 //external
 

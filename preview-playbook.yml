@@ -17,4 +17,5 @@ ui:
 asciidoc:
   attributes:
     skupper-preview: true
-
+  extensions:
+  - ./extensions/admonitions.js
