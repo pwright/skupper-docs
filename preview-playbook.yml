@@ -19,3 +19,9 @@ asciidoc:
     skupper-preview: true
   extensions:
   - ./extensions/admonitions.js
+
+runtime:
+  log:
+    destination:
+      file: ./antora.log
+    level: debug
