@@ -1,45 +1,40 @@
-
-* xref:index.adoc[]
-
-* *Basics*
-
-* xref:overview:index.adoc[Overview]
-* xref:overview:security.adoc[Security]
-* xref:overview:connectivity.adoc[Connectivity]
-* xref:overview:routing.adoc[Routing]
-
-* *Kubernetes*
-
-* link:https://skupper.io/start/index.html[Getting started] (md)
-* xref:cli:index.adoc[CLI guide]
-* xref:cli:index.adoc#exposing-services-local[Using local services (gateway)] 
-* xref:cli-reference:skupper.adoc[CLI reference]
-* xref:declarative:index.adoc[YAML configuration reference]
-* xref:cli:index.adoc#gateway-reference[Gateway YAML reference]
-* xref:operator:index.adoc[Using the Skupper operator]
-
-* xref:kubernetes:index.adoc[]
-* xref:kubernetes:service-certs.adoc[]
-
-
-
-* *Podman*
-
-* xref:cli:podman.adoc[CLI guide]
-* xref:cli-podman:skupper.adoc[Podman Reference]
-
-* *Observability*
-
-* xref:console:index.adoc[Console]
-
-* *Security*
-
-* xref:cli:tokens.adoc[]
-* xref:cli:native-security-options.adoc[]
-* xref:policy:index.adoc[]
-
-* *Troubleshooting*
-
-* xref:troubleshooting:index.adoc[]
-
-
+* (https://skupper.io/start/index.html)[Skupper - Getting started]
+* (https://skupper.io/examples/index.html)[Skupper - Examples]
+* xref:cli:index.adoc[Skupper - Using the Skupper CLI]
+** xref:cli:index.adoc#creating-using-cli)[Creating a site using the CLI]
+** xref:cli:index.adoc#custom-sites)[Custom sites]
+** xref:cli:index.adoc#linking-sites)[Linking sites]
+** xref:cli:index.adoc#link-cost)[Specifying link cost]
+** xref:cli:index.adoc#exposing-services-ns)[Exposing services on the service network from a namespace]
+** xref:cli:index.adoc#exposing-services-local)[Exposing services on the service network from a local machine]
+** xref:cli:index.adoc#network-service-skupper-io)[Exploring a service network]
+** xref:cli:index.adoc#built-in-security-options)[Securing a service network]
+** xref:cli:index.adoc#protocols-skupper-io)[Supported standards and protocols]
+** xref:cli:index.adoc#cli-global-options)[CLI options for working with different clusters]
+* (https://skupper.io/docs/cli/podman.html)[Skupper - Using Skupper podman]
+** (https://skupper.io/docs/cli/podman.html#about-skupper-io)[About Skupper podman]
+** (https://skupper.io/docs/cli/podman.html#creating-a-site-skupper-io)[Creating a site using Skupper podman]
+** (https://skupper.io/docs/cli/podman.html#_linking_sites_using_skupper_podman)[Linking sites using Skupper podman]
+** (https://skupper.io/docs/cli/podman.html#_working_with_services_using_skupper_podman)[Working with services using Skupper podman]
+* (https://skupper.io/docs/console/index.html)[Skupper - Using the Skupper console]
+** (https://skupper.io/docs/console/index.html#enabling-console)[Enabling the Skupper console]
+** (https://skupper.io/docs/console/index.html#accessing-console)[Accessing the Skupper console]
+** (https://skupper.io/docs/console/index.html#exploring-console)[Exploring the Skupper console]
+* (https://skupper.io/docs/declarative/index.html)[Skupper - Configuring Skupper sites using YAML]
+** (https://skupper.io/docs/declarative/index.html#creating-using-yaml)[Creating a Skupper site using YAML]
+** (https://skupper.io/docs/declarative/index.html#linking-sites-using-yaml)[Linking sites using YAML]
+** (https://skupper.io/docs/declarative/index.html#skupper-annotations)[Configuring services using annotations]
+** (https://skupper.io/docs/declarative/index.html#site-config-reference)[Appendix A: Site ConfigMap YAML reference]
+* (https://skupper.io/docs/troubleshooting/index.html)[Skupper - Troubleshooting a service network]
+** (https://skupper.io/docs/troubleshooting/index.html#checking-sites)[Checking sites]
+** (https://skupper.io/docs/troubleshooting/index.html#checking-links)[Checking links]
+** (https://skupper.io/docs/troubleshooting/index.html#debug-gateways)[Checking gateways]
+** (https://skupper.io/docs/troubleshooting/index.html#creating-debug)[Creating a Skupper debug tar file]
+** (https://skupper.io/docs/troubleshooting/index.html#router-performance)[Improving Skupper router performance]
+** (https://skupper.io/docs/troubleshooting/index.html#common-problems)[Resolving common problems]
+* (https://skupper.io/docs/policy/index.html)[Skupper - Securing a service network using policies]
+** (https://skupper.io/docs/policy/index.html#about-skupper-policies)[About the policy system]
+** (https://skupper.io/docs/policy/index.html#upgrading-existing-sites)[Upgrading on a cluster with existing sites]
+** (https://skupper.io/docs/policy/index.html#creating-policies)[Creating policies for the policy system]
+** (https://skupper.io/docs/policy/index.html#exploring-policies)[Exploring the current policies for a cluster]
+* (https://skupper.io/docs/operator/index.html#creating-site-using-operator-skupper-io)[Creating a site using the Skupper Operator]
