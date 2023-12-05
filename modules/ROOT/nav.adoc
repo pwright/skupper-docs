@@ -1,5 +1,5 @@
-* (https://skupper.io/start/index.html)[Skupper - Getting started]
-* (https://skupper.io/examples/index.html)[Skupper - Examples]
+//* (https://skupper.io/start/index.html)[Skupper - Getting started]
+//* (https://skupper.io/examples/index.html)[Skupper - Examples]
 * xref:cli:index.adoc[Skupper - Using the Skupper CLI]
 ** xref:cli:index.adoc#creating-using-cli)[Creating a site using the CLI]
 ** xref:cli:index.adoc#custom-sites)[Custom sites]
@@ -11,6 +11,8 @@
 ** xref:cli:index.adoc#built-in-security-options)[Securing a service network]
 ** xref:cli:index.adoc#protocols-skupper-io)[Supported standards and protocols]
 ** xref:cli:index.adoc#cli-global-options)[CLI options for working with different clusters]
+
+////
 * (https://skupper.io/docs/cli/podman.html)[Skupper - Using Skupper podman]
 ** (https://skupper.io/docs/cli/podman.html#about-skupper-io)[About Skupper podman]
 ** (https://skupper.io/docs/cli/podman.html#creating-a-site-skupper-io)[Creating a site using Skupper podman]
@@ -38,3 +40,4 @@
 ** (https://skupper.io/docs/policy/index.html#creating-policies)[Creating policies for the policy system]
 ** (https://skupper.io/docs/policy/index.html#exploring-policies)[Exploring the current policies for a cluster]
 * (https://skupper.io/docs/operator/index.html#creating-site-using-operator-skupper-io)[Creating a site using the Skupper Operator]
+////
