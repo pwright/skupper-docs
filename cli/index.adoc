@@ -24,12 +24,18 @@ Installing the `skupper` command-line interface (CLI) provides a simple method t
 
 . Verify the installation.
 +
+--
+//paired
 [source, bash, subs=attributes+]
 ----
 $ skupper version
+----
+The following output is displayed:
+[source, output, subs=attributes+]
+----
 client version {skupper-cli-version}
 ----
-
+--
 
 // Type: procedure
 [id="creating-using-cli"] 
