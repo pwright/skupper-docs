@@ -48,3 +48,7 @@ Learn how to use the Skupper CLI or YAML to create Docker, Podmand or Linux site
 [cli-ref]: https://skupperproject.github.io/refdog/commands/index.html
 [yaml-ref]: https://skupperproject.github.io/refdog/resources/index.html
 [install]: ./install/index.html
+
+[cli-ref]: https://skupperproject.github.io/refdog/commands/index.html
+[yaml-ref]: https://skupperproject.github.io/refdog/resources/index.html
+[install]: ./install/index.html
