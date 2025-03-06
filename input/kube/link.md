@@ -1,4 +1,13 @@
-# Linking sites on Kubernetes using the Skupper CLI
+# Linking sites on Kubernetes
+
+Linking sites allows you expose services from one site and consume those services on another site.
+You can link sites using the following methods:
+
+* Using the CLI to create tokens
+* Using YAML to create tokens
+* Using direct linking
+
+## Linking sites on Kubernetes using the Skupper CLI
 
 Using the skupper command-line interface (CLI) allows you to create links between sites.
 
@@ -17,7 +26,7 @@ To link sites, you create a token on one site and redeem that token on the other
    ```
 2. Create a token:
    ```bash
-   skupper token create <filename>
+   skupper token issue <filename>
    ```
    where `<filename>` is the name of a YAML file that is saved on your local filesystem.
 
@@ -28,8 +37,8 @@ To link sites, you create a token on one site and redeem that token on the other
    Protect it appropriately.
    A token can be restricted by:
 
-   * time - prevents token reuse after a specified period.
-   * usage - prevents creating multiple links from a single token.
+   * expiration-window  - prevents token reuse after a specified period. The default is 15 minutes.
+   * redemptions-allowed - prevents creating more links from a single token than planned. The default is 1.
    
    All inter-site traffic is protected by mutual TLS using a private, dedicated certificate authority (CA).
    A token is not a certificate, but is securely exchanged for a certificate during the linking process.
@@ -60,7 +69,7 @@ To link sites, you create a token on one site and redeem that token on the other
 There are many options to consider when linking sites using the CLI, see [CLI Reference][cli-ref], including *frequently used* options.
 
 
-# Linking sites on Kubernetes using YAML
+## Linking sites on Kubernetes using YAML
 
 You can use YAML to link sites.
 
@@ -119,19 +128,6 @@ You can use YAML to link sites.
 
    This file contains a key and the location of the site that created it.
    
-   **📌 NOTE**
-   Access to this file provides access to the application network. 
-   Protect it appropriately.
-   A token can be restricted by:
-
-   * time - prevents token reuse after a specified period.
-   * usage - prevents creating multiple links from a single token.
-   
-   All inter-site traffic is protected by mutual TLS using a private, dedicated certificate authority (CA).
-   A token is not a certificate, but is securely exchanged for a certificate during the linking process.
-   By implementing appropriate restrictions (for example, creating a single-use claim token), you can avoid the accidental exposure of certificates.
-
-
 3. Redeem the token on a different site to create a link:
    ```bash
    kubectl apply -f <filename>
@@ -158,3 +154,61 @@ There are many options to consider when linking sites using YAML, see [YAML Refe
 
 [cli-ref]: https://skupperproject.github.io/refdog/commands/index.html
 [yaml-ref]: https://skupperproject.github.io/refdog/resources/index.html
+
+## Linking sites directly
+
+You can also create links between sites directly as an alternative to creating tokens.
+
+.Prerequisites
+
+* Two sites
+* At least one site with `enable-link-access` enabled.
+
+To link sites, you create a token on one site and redeem that token on the other site to create the link.
+
+.Procedure
+
+1. On the site where you want to issue the token, make sure link access is enabled:
+   ```bash
+   skupper site update --enable-link-access
+   ```
+2. Create a link resource:
+   ```bash
+   skupper link generate > <filename>
+   ```
+   where `<filename>` is the name of a YAML file that is saved on your local filesystem.
+
+   This file contains TLS certs and the location of the site that created it.
+   
+   **📌 NOTE**
+   Access to this file provides access to the application network. 
+   Protect it appropriately.
+
+   All inter-site traffic is protected by mutual TLS using a private, dedicated certificate authority (CA).
+   A token is not a certificate, but is securely exchanged for a certificate during the linking process.
+   By implementing appropriate restrictions (for example, creating a single-use claim token), you can avoid the accidental exposure of certificates.
+
+
+3. Use the link resource on a different site to create a link:
+   ```bash
+   kubectl apply -f <filename>
+   ```
+   where `<filename>` is the name of a YAML file that is saved on your local filesystem.
+
+4. Check the status of the link:
+   ```bash
+   skupper link status
+   ```
+   You might need to issue the command multiple times before the link is ready:
+   ```
+   $ skupper link status
+   NAME                                            STATUS  COST    MESSAGE
+   west-12f75bc8-5dda-4256-88f8-9df48150281a       Pending 1       Not Operational
+   $ skupper link status
+   NAME                                            STATUS  COST    MESSAGE
+   west-12f75bc8-5dda-4256-88f8-9df48150281a       Ready   1       OK
+   ```
+   You can now expose services on the application network.
+
+There are many options to consider when linking sites using the CLI, see [CLI Reference][cli-ref], including *frequently used* options.
+

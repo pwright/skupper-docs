@@ -118,7 +118,7 @@ You must link sites before you can expose services on the network.
 **📌 NOTE**
 By default, tokens expire after 5 minutes and you can only use a token once.
 Generate a new token if the link is not connected.
-You can also generate tokens using the `-token-type cert` option for permanent reusable tokens.
+You can also generate links for permanent reusable tokens.
 
 This section outlines some advanced options for checking links.
 
