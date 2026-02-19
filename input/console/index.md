@@ -82,3 +82,91 @@ For example, consider the following service:
 <!--
 ![services](../images/console.png)
 -->
+
+For more information, see [Configuring the Network observer](#configuring-network-observer)
+
+<a id="configuring-network-observer"></a>
+# Configuring the Network observer
+
+Currently the primary purpose of the Network Observer is to provide a console for monitoring your application network.
+Typically, you only need to follow the procedure in [Using the Network console](#console).
+This section describes advanced configuration.
+
+
+1. Change context to a site namespace.
+
+2. Apply a CR to create the Network Observer instance
+
+   The following CR shows the supported parameters that you can use to configure the Network observer instance:
+   
+   ```
+   apiVersion: observability.skupper.io/v2alpha1
+   kind: NetworkObserver
+   metadata:
+     name: networkobserver-sample
+     namespace: west
+   spec:
+     # Resource requests and limits
+     resources:
+       requests:
+         cpu: "250m"
+         memory: "4Gi"
+       limits:
+         cpu: "1"
+         memory: "8Gi"
+   
+     # Authentication strategies
+     auth:
+       # strategy is one of none, basic, or openshift
+       strategy: "openshift"
+       openshift:
+         # createCookieSecret -
+         # for the openshift oauth2 proxy.
+         createCookieSecret: true
+         # cookieSecretName name of the session cookie secret.
+         cookieSecretName: ""
+         # Service account for openshift auth
+         serviceAccount:
+           create: true
+           nameOverride: ""
+   ```
+
+3. Verify the configuration, enter:
+
+   ```
+   oc describe networkobserver networkobserver-sample -n west
+   ```
+   
+   Note that the parameters listed in output, not related to the CR above, are not configurable.
+   
+   
+   If you require further configuration parameters, create a request in the [Skupper JIRA project](https://issues.redhat.com/projects/SKUPPER/).
+
+
+**Troubleshooting**
+
+If you are concerned about Network Observer resources, consider using standard techniques to monitor those resources, for example:
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: network-observer-memory-alert
+  namespace: west
+spec:
+  groups:
+  - name: network-observer.rules
+    rules:
+    - alert: NetworkObserverHighMemory
+      expr: |
+        (container_memory_working_set_bytes{namespace="west", container="network-observer"} 
+        / 
+        kube_pod_container_resource_limits{namespace="west", container="network-observer", resource="memory"}) > 0.9
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Network Observer pod in namespace {{ $labels.namespace }} is using > 90% of its memory limit."
+        description: "Pod {{ $labels.pod }} is currently using {{ $value | humanizePercentage }} of its memory limit."
+```
+
