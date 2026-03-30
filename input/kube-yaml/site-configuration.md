@@ -73,6 +73,7 @@ There are many options to consider when creating sites using YAML, see the [YAML
 
 You can create a site that is highly available by using the `ha` option.
 High availability mode is intended to maintain service continuity during router restarts or pod rescheduling, but it does not provide failover if network connectivity between sites is lost.
+High availability mode deploys two router pods with anti-affinity rules to ensure service continuity during node failures.
 
 **Prerequisites**
 

@@ -81,6 +81,7 @@ For example
 
 You can create a site that is highly available by using the `ha` option.
 High availability mode is intended to maintain service continuity during router restarts or pod rescheduling, but it does not provide failover if network connectivity between sites is lost.
+High availability mode deploys two router pods with anti-affinity rules to ensure service continuity during node failures.
 
 **Prerequisites**
 
@@ -106,7 +107,8 @@ High availability mode is intended to maintain service continuity during router 
    ```
    ha: true
    ```
-   When high availability mode is enabled, multiple router pods are created so that traffic can continue if one pod restarts or is rescheduled.
+   When high availability mode is enabled, two router pods are created so that traffic can continue if one pod restarts or is rescheduled.
+   High availability can also help during a node failure.
 
 <a id="kube-deleting-site-cli"></a>
 ## Deleting a site using the CLI on Kubernetes
