@@ -1,3 +1,6 @@
+---
+render_macros: false
+---
 <a id="kube-yaml-site-linking"></a>
 # Linking sites on Kubernetes using YAML
 
@@ -63,10 +66,10 @@ A connecting site redeems this token for a `Link` resource to establish a link t
 
 2. On the listening site, populate environment variables to allow token generation:
 
-   ```shell
-   URL="$(kubectl get accessgrant grant-west -o template --template '{{{ .status.url }}}')"
-   CODE="$(kubectl get accessgrant grant-west -o template --template '{{{ .status.code }}}')"
-   CA_RAW="$(kubectl get accessgrant grant-west -o template --template '{{{ .status.ca }}}')"
+   ```bash
+   URL="$(kubectl get accessgrant grant-west -o template --template '{{ .status.url }}')"
+   CODE="$(kubectl get accessgrant grant-west -o template --template '{{ .status.code }}')"
+   CA_RAW="$(kubectl get accessgrant grant-west -o template --template '{{ .status.ca }}')"
    ```
    
    These environment variable settings support the next step of generating the token.

@@ -83,7 +83,7 @@ To link sites, you create a token on the Kubernetes site and redeem that token o
 
 There are many options to consider when linking sites using the CLI, see [CLI Reference][cli-ref], including *frequently used* options.
 
-<a id="kube-link-cli"></a>
+<a id="system-link-cli"></a>
 ## Linking sites using a `link` resource
 
 An alternative approach to linking sites using tokens is to create a `link` resource YAML file using the CLI, and to apply that resource to another site.
