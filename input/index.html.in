@@ -70,3 +70,9 @@ title: Documentation
 <ul>
   <li><a href="console/index.html">Using the Skupper console</a></li>
 </ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Learn how to diagnose common application network problems.</p>
+<ul>
+  <li><a href="troubleshooting/index.html">Troubleshooting an application network</a></li>
+</ul>

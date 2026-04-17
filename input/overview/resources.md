@@ -13,7 +13,7 @@ To get start creating application networks, you create the following custom reso
 * Connectors
 * Listeners
 
-See [Resource Reference][yaml-ref] for explanations of all the custom resources.
+See [Resource CONCEPT][yaml-ref] for explanations of all the custom resources.
 
 <a id="kube-resources-sa"></a>
 ## Service accounts, roles and role bindings
