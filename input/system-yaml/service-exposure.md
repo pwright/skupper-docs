@@ -1,5 +1,8 @@
 <a id="system-yaml-service-exposure"></a>
 # Exposing services on the application network using YAML
+<!--ASSEMBLY-->
+
+Use YAML to create connectors and listeners for services on the application network.
 
 After creating an application network by linking sites, you can expose services from one site using connectors and consume those services on other sites using listeners.
 A *routing key* is a string that matches one or more connectors with one or more listeners.
@@ -7,12 +10,15 @@ For example, if you create a connector with the routing key `backend`, you need 
 
 This section assumes you have created and linked at least two sites.
 
+<a id="system-creating-connector-yaml"></a>
 ## Creating a connector using YAML
+<!--PROCEDURE-->
 
 A connector binds a local workload to listeners in remote sites.
 Listeners and connectors are matched using routing keys.
 
-For more information about connectors see [Connector concept][connector]
+For more information about connectors see [Connector concept][connector].
+For configuration details, see [Connector resource][connector-resource].
 
 **Procedure**
 
@@ -51,7 +57,7 @@ For more information about connectors see [Connector concept][connector]
    
    For example:
    
-   ```
+   ```text
    NAME    STATUS  ROUTING-KEY     SELECTOR        HOST    PORT    HAS MATCHING LISTENER    MESSAGE
    backend Pending backend         app=backend             8080    false   No matching listeners
    ```
@@ -59,13 +65,15 @@ For more information about connectors see [Connector concept][connector]
    By default, the routing key name is set to the name of the connector.
    If you want to use a custom routing key, set the `--routing-key` to your custom name.
 
-There are many options to consider when creating connectors using YAML, see [CLI Reference][cli-ref], including *frequently used* options.
-
-
+<a id="system-creating-listener-yaml"></a>
 ## Creating a listener using YAML
+<!--PROCEDURE-->
 
 A listener binds a local connection endpoint to connectors in remote sites. 
 Listeners and connectors are matched using routing keys.
+
+For more information about listeners, see [Listener concept][listener].
+For configuration details, see [Listener resource][listener-resource].
 
 **Procedure**
 
@@ -87,7 +95,7 @@ Listeners and connectors are matched using routing keys.
    This creates a listener in the `west` site and matches with the connector that uses the routing key `backend`. 
    It also creates a service named  `east-backend` exposed on port 8080 in the current namespace.
 
-   To create the connector resource:
+   To create the listener resource:
 
    ```bash
    kubectl apply -f <filename>
@@ -102,7 +110,7 @@ Listeners and connectors are matched using routing keys.
    
    For example:
    
-   ```
+   ```text
    NAME      ROUTING KEY   PORT   HOST           STATUS   HAS MATCHING CONNECTOR   MESSAGE
    backend   backend       8080   east-backend   Ready    true                     OK   
    ```
@@ -110,7 +118,7 @@ Listeners and connectors are matched using routing keys.
    **📌 NOTE**
    There must be a `MATCHING-CONNECTOR` for the service to operate.
 
-There are many options to consider when creating connectors using YAML, see [CLI Reference][cli-ref], including *frequently used* options.
-
 [connector]: https://skupperproject.github.io/refdog/concepts/connector.html
 [listener]: https://skupperproject.github.io/refdog/concepts/listener.html
+[connector-resource]: https://skupperproject.github.io/refdog/resources/connector.html
+[listener-resource]: https://skupperproject.github.io/refdog/resources/listener.html
