@@ -88,7 +88,7 @@ There are many options to consider when creating listeners using the CLI, see [C
    For example:
    ```text
    $ skupper listener create my-server 8080
-   File written to /home/user/.local/share/skupper/namespaces/default/input/resources/Listener-backend.yaml
+   File written to /home/user/.local/share/skupper/namespaces/default/input/resources/Listener-my-server.yaml
    ```
    Apply the configuration using:
    ```bash
@@ -107,7 +107,7 @@ There are many options to consider when creating listeners using the CLI, see [C
    ```text
    $ skupper listener status
    NAME		STATUS	ROUTING-KEY	HOST		PORT
-   my-server	Ok	my-server	localhost	8081
+   my-server	Ok	my-server	localhost	8080
 
    ```
    

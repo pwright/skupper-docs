@@ -92,8 +92,8 @@ For configuration details, see [Listener resource][listener-resource].
      host: east-backend
      port: 8080
    ```
-   This creates a listener in the `west` site and matches with the connector that uses the routing key `backend`. 
-   It also creates a service named  `east-backend` exposed on port 8080 in the current namespace.
+   This creates a listener on the local system site and matches it with connectors that use the routing key `backend`.
+   The listener accepts connections on port 8080 using the configured host value.
 
    To create the listener resource:
 
