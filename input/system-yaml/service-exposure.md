@@ -63,7 +63,7 @@ For configuration details, see [Connector resource][connector-resource].
    ```
    **📌 NOTE**
    By default, the routing key name is set to the name of the connector.
-   If you want to use a custom routing key, set the `--routing-key` to your custom name.
+   If you want to use a custom routing key, set `spec.routingKey` to your custom value.
 
 <a id="system-creating-listener-yaml"></a>
 ## Creating a listener using YAML

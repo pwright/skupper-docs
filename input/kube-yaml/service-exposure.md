@@ -62,7 +62,7 @@ There are many options to consider when creating connectors using YAML, see [Con
    ```
    **📌 NOTE**
    By default, the routing key name is set to the name of the connector.
-   If you want to use a custom routing key, set the `--routing-key` to your custom name.
+   If you want to use a custom routing key, set `spec.routingKey` to your custom value.
 
 <!-- Creating a listener on Kubernetes using YAML -->
 <a id="kube-creating-listener-yaml"></a>
