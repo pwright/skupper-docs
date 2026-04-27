@@ -111,8 +111,8 @@ For configuration details, see [Listener resource][listener-resource].
    For example:
    
    ```text
-   NAME      ROUTING KEY   PORT   HOST           STATUS   HAS MATCHING CONNECTOR   MESSAGE
-   backend   backend       8080   east-backend   Ready    true                     OK   
+   NAME      STATUS   ROUTING-KEY   HOST          PORT   MATCHING-CONNECTOR   MESSAGE
+   backend   Ready    backend       east-backend  8080   true                 OK
    ```
    
    **📌 NOTE**

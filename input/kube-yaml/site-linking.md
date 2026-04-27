@@ -1,6 +1,7 @@
 ---
 render_macros: false
 ---
+<!-- Macro rendering is disabled because this page contains literal Go template expressions. -->
 <a id="kube-yaml-site-linking"></a>
 # Linking sites on Kubernetes using YAML
 <!--ASSEMBLY-->
