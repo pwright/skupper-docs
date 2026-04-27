@@ -149,7 +149,9 @@ To update an existing site to the latest images or configuration matching your c
 	```
 	*This command refreshes the site definition and pulls the latest images associated with the CLI version.*
 
-**Updating the controller** 
+<a id="skupper-upgrading-local-controller"></a>
+### Upgrading the Skupper controller
+<!--PROCEDURE-->
 
 Currently, `skupper system uninstall` protects active sites by refusing to run if a site is detected. However, if you need to force an update to the **controller** itself (to pick up a new controller version) without deleting your sites, follow this manual workaround:
 

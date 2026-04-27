@@ -11,7 +11,6 @@ For example, if you create a connector with the routing key `backend`, you need 
 This section assumes you have created and linked at least two sites.
 
 <a id="kube-creating-connector-cli"></a>
-<!-- Creating a connector on Kubernetes using the CLI -->
 ## Creating a connector using the CLI
 <!--PROCEDURE-->
 
@@ -59,7 +58,6 @@ There are many options to consider when creating connectors using the CLI, see [
 If you need to expose a service from another namespace, you must use YAML as described in [Creating a connector for a different namespace using YAML][attached].
 
 <a id="kube-creating-listener-cli"></a>
-<!-- Creating a listener on Kubernetes using the CLI -->
 ## Creating a listener using the CLI
 <!--PROCEDURE-->
 

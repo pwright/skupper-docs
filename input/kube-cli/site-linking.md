@@ -114,13 +114,13 @@ To link sites, you create a `link` resource YAML file on one site and apply that
    
    If the listening site uses high availability mode, two link resources are created.
 
-1. Apply the `link` resource YAML file on a different site to create a link:
+3. Apply the `link` resource YAML file on a different site to create a link:
    ```bash
    kubectl apply -f <filename>
    ```
    where `<filename>` is the name of a YAML file that is saved on your local filesystem.
 
-2. Check the status of the link:
+4. Check the status of the link:
    ```bash
    skupper link status
    ```
