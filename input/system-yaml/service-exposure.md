@@ -45,14 +45,14 @@ For configuration details, see [Connector resource][connector-resource].
    To create the connector resource:
 
    ```bash
-   kubectl apply -f <filename>
+   skupper system apply -f <filename>
    ```
 
    where `<filename>` is the name of a YAML file that is saved on your local filesystem.
 
 3. Check the connector status:
    ```bash
-   kubectl get connector
+   skupper connector status
    ```
    
    For example:
@@ -98,14 +98,14 @@ For configuration details, see [Listener resource][listener-resource].
    To create the listener resource:
 
    ```bash
-   kubectl apply -f <filename>
+   skupper system apply -f <filename>
    ```
 
    where `<filename>` is the name of a YAML file that is saved on your local filesystem.
 
 3. Check the listener status:
    ```bash
-   kubectl get listener
+   skupper listener status
    ```
    
    For example:
