@@ -106,8 +106,8 @@ There are many options to consider when creating listeners using the CLI, see [C
    
    ```text
    $ skupper listener status
-   NAME        STATUS  ROUTING-KEY  HOST       PORT  MATCHING-CONNECTOR  MESSAGE
-   my-server   Ready   my-server    my-server  8080  true                OK
+   NAME      STATUS  ROUTING-KEY  HOST     PORT  MATCHING-CONNECTOR  MESSAGE
+   backend   Ready   backend      0.0.0.0  8080  true                OK
 
    ```
    
