@@ -81,6 +81,9 @@ There are many options to consider when creating sites using the CLI, see [CLI R
 
 <a id="kube-ha-cli"></a>
 ## Creating a high availability site using the CLI on Kubernetes
+<!--PROCEDURE-->
+
+Create a highly available Skupper site on Kubernetes by enabling HA mode in the CLI.
 
 You can create a site that is highly available by using the `ha` option.
 High availability mode is intended to maintain service continuity during router restarts or pod rescheduling, but it does not provide failover if network connectivity between sites is lost.
