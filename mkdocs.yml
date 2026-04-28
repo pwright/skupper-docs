@@ -74,6 +74,7 @@ nav:
     - Service Exposure: system-yaml/service-exposure.md
   - Console: console/index.md
   - Troubleshooting: troubleshooting/index.md
+  - ...
 
 markdown_extensions:
   - admonition
@@ -99,6 +100,7 @@ validation:
 
 plugins:
   - search
+  - awesome-pages
   - macros:
       module_name: config/mkdocs_macros
 
