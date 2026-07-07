@@ -33,7 +33,11 @@ This document describes two approaches for using custom certificates:
 **Site-specific context**
 
 * `RouterAccess` is a **listening site** concern - it controls how your site accepts incoming link connections
-* `Certificate` CR is a **connecting site** concern - it generates client credentials for outgoing links to remote sites
+* `Certificate` CR can be used on **both sites**:
+  * On the **listening site** - if a CA secret is present in the namespace, the Certificate CR can reference it to sign the server certificate
+  * On the **connecting site** - it generates client credentials for outgoing links, but only if the CA used to sign those credentials is also present in the namespace
+  
+**Note:** If a `RouterAccess` references a custom secret signed by an external CA (where no CA secret exists in the namespace), then client `Certificate` CRs cannot be used.
 
 In both approaches, the listening site provides server certificates and the connecting site uses client certificates to establish the link.
 
