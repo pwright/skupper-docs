@@ -145,7 +145,9 @@ The alternative is to define the `RouterAccess` CR yourself with `generateTlsCre
    kubectl get secret skupper-link -o yaml | yq eval -o=yaml 'del(.metadata.namespace, .metadata.creationTimestamp, .metadata.resourceVersion, .metadata.uid, .metadata.managedFields)' - > client-secret.yaml
    ```
 
-   If you are providing the client certificate yourself, create a Secret named `skupper-link` directly and save it as `client-secret.yaml`.
+   **If you provided your own server certificate without using `skupper-site-ca` to sign it:**
+   
+   You must issue a client certificate yourself and create a Secret named `skupper-link` directly. The client certificate must be signed by the same CA that signed your custom server certificate. Create the Secret similarly to how you created the server certificate earlier, ensuring the `ca.crt` field contains the same CA certificate. Save it as `client-secret.yaml`.
 
 6. On the listening site, create a `Link` resource YAML file.
 
@@ -298,7 +300,7 @@ NOTE: In this procedure you delete and recreate your site to make sure the certi
    spec:
      ca: skupper-site-ca
      client: true
-     subject: skupper.public.host
+     subject: skupper-client
    ```
    Apply the resource:
    ```shell
