@@ -33,11 +33,11 @@ This document describes two approaches for using custom certificates:
 **Site-specific context**
 
 * `RouterAccess` is a **listening site** concern - it controls how your site accepts incoming link connections
-* `Certificate` CR can be used on **both sites**:
-  * On the **listening site** - if a CA secret is present in the namespace, the Certificate CR can reference it to sign the server certificate
-  * On the **connecting site** - it generates client credentials for outgoing links, but only if the CA used to sign those credentials is also present in the namespace
+* `Certificate` CR can be used on **both sites**, but only if the referenced CA secret exists in the namespace:
+  * On the **listening site** - the Certificate CR can reference a CA secret to sign the server certificate
+  * On the **connecting site** - it generates client credentials for outgoing links, but the CA that signs those credentials must also be present in the namespace
   
-**Note:** If a `RouterAccess` references a custom secret signed by an external CA (where no CA secret exists in the namespace), then client `Certificate` CRs cannot be used.
+**Note:** If a `RouterAccess` references a custom secret signed by an external CA (where no CA secret exists in the namespace), then `Certificate` CRs cannot be used to generate client credentials automatically.
 
 In both approaches, the listening site provides server certificates and the connecting site uses client certificates to establish the link.
 
@@ -125,7 +125,9 @@ The alternative is to define the `RouterAccess` CR yourself with `generateTlsCre
 
 5. On the listening site, create client credentials for the connecting site.
 
-   Since Skupper still creates the `skupper-site-ca` signing `Certificate` resource, you can use it to generate a client secret automatically. Create a `Certificate` resource:
+   **a)** If your server certificate was signed by `skupper-site-ca`:
+
+   Since Skupper creates the `skupper-site-ca` signing `Certificate` resource, you can use it to generate a client secret automatically. Create a `Certificate` resource:
    ```yaml
    apiVersion: skupper.io/v2alpha1
    kind: Certificate
@@ -145,13 +147,13 @@ The alternative is to define the `RouterAccess` CR yourself with `generateTlsCre
    kubectl get secret skupper-link -o yaml | yq eval -o=yaml 'del(.metadata.namespace, .metadata.creationTimestamp, .metadata.resourceVersion, .metadata.uid, .metadata.managedFields)' - > client-secret.yaml
    ```
 
-   **If you provided your own server certificate without using `skupper-site-ca` to sign it:**
-   
+   **b)** If your server certificate was signed by a different CA:
+
    You must issue a client certificate yourself and create a Secret named `skupper-link` directly. The client certificate must be signed by the same CA that signed your custom server certificate. Create the Secret similarly to how you created the server certificate earlier, ensuring the `ca.crt` field contains the same CA certificate. Save it as `client-secret.yaml`.
 
-6. On the listening site, create a `Link` resource YAML file.
+6. From the listening site, create a `Link` resource YAML file.
 
-   **Option A: Using kubectl with jq and yq**
+   **Option A:** Using kubectl with jq and yq
    ```shell
    kubectl get routeraccess my-router-access -o json | jq '{
      apiVersion: "skupper.io/v2alpha1",
@@ -167,7 +169,7 @@ The alternative is to define the `RouterAccess` CR yourself with `generateTlsCre
    cat client-secret.yaml >> skupper-link.yaml
    ```
 
-   **Option B: Manual generation**
+   **Option B:** Manual generation
 
    Retrieve the endpoints:
    ```shell
