@@ -10,6 +10,8 @@ See [API documentation](/api/) for the OpenAPI documentation.
 ## Getting started with Skupper network console
 <!--CONCEPT-->
 
+Install the Network Observer on a Kubernetes cluster.
+
 * Helm 3.8 or later
 * kubectl access to target Kubernetes cluster
 * A Skupper site 
@@ -121,6 +123,8 @@ For complete configuration details and examples, see [Network Observer Configura
 ### Configuration Examples
 <!--REFERENCE-->
 
+Reference examples for common configuration scenarios.
+
 **Persistent Storage**
 
 ```yaml
@@ -221,6 +225,8 @@ extraArgs:
 ### Validation and Troubleshooting
 <!--REFERENCE-->
 
+Verify the Network Observer installation and diagnose common issues.
+
 **Verify Installation**
 
 ```bash
@@ -274,6 +280,8 @@ kubectl logs deployment/skupper-network-observer -c prometheus
 ### Upgrade and Rollback
 <!--PROCEDURE-->
 
+Upgrade the Network Observer or roll back to a previous version.
+
 **Upgrade Release**
 
 ```bash
@@ -298,6 +306,8 @@ helm rollback skupper-network-observer
 <a id="console-uninstall"></a>
 ### Uninstallation
 <!--PROCEDURE-->
+
+Remove the Network Observer and associated resources.
 
 **Uninstall Release**
 
