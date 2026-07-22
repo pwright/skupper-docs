@@ -119,6 +119,7 @@ For complete configuration details and examples, see [Network Observer Configura
 
 <a id="console-config-examples"></a>
 ### Configuration Examples
+<!--REFERENCE-->
 
 **Persistent Storage**
 
@@ -218,6 +219,7 @@ extraArgs:
 
 <a id="console-validation"></a>
 ### Validation and Troubleshooting
+<!--REFERENCE-->
 
 **Verify Installation**
 
@@ -270,6 +272,7 @@ kubectl logs deployment/skupper-network-observer -c prometheus
 
 <a id="console-upgrade"></a>
 ### Upgrade and Rollback
+<!--PROCEDURE-->
 
 **Upgrade Release**
 
@@ -294,6 +297,7 @@ helm rollback skupper-network-observer
 
 <a id="console-uninstall"></a>
 ### Uninstallation
+<!--PROCEDURE-->
 
 **Uninstall Release**
 

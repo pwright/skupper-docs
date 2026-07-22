@@ -125,7 +125,7 @@ A connecting site redeems this token for a `Link` resource to establish a link t
 
 <a id="kube-link-cost-yaml"></a>
 ## Specifying link cost using YAML
-<!--PROCEDURE-->
+<!--REFERENCE-->
 
 Link cost is a configurable integer value that influences how Skupper routes
 traffic across links between sites.
