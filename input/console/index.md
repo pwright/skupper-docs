@@ -1,3 +1,6 @@
+---
+skip: true
+---
 <a id="console"></a>
 # Using the Skupper network console
 <!--ASSEMBLY-->
