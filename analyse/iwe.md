@@ -104,3 +104,10 @@ just test
 ```
 
 The tests use `tests/fixtures/fake_iwe.py` to return deterministic IWE-shaped JSON. A golden test compares a complete Markdown summary against `tests/golden/summary.md`. No network access or IWE installation is required for these contract tests.
+
+## Report
+
+```bash
+ python3 iwe-tree-reports/iwe_report.py --workspace . --scan . --exclude-dir refdog --format json --strict -v -o report.json
+ ```
+ 
