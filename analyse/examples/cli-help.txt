@@ -1,0 +1,29 @@
+usage: iwe_report.py [-h] [--workspace WORKSPACE] [--scan SUBDIR |
+                     --keys-from FILE] [--exclude-dir NAME_OR_GLOB]
+                     [--exclude-from FILE] [--report {summary,files,headings}]
+                     [--format {markdown,csv,json}] [--output FILE]
+                     [--iwe IWE] [--batch-size BATCH_SIZE] [--strict] [-v]
+
+Report on IWE-parsed Markdown, with directory exclusions.
+
+options:
+  -h, --help            show this help message and exit
+  --workspace WORKSPACE
+                        IWE project root containing .iwe/config.toml (default:
+                        cwd)
+  --scan SUBDIR         Directory beneath IWE library root to scan (default:
+                        .)
+  --keys-from FILE      Read IWE document keys, one per line; '-' reads stdin
+  --exclude-dir NAME_OR_GLOB
+                        Exclude directory by name anywhere, or library-
+                        relative glob; repeatable
+  --exclude-from FILE   Text file of directory exclusions (one per line; #
+                        comments)
+  --report {summary,files,headings}
+  --format {markdown,csv,json}
+  --output, -o FILE     Output path or '-' for stdout
+  --iwe IWE             IWE executable (default: iwe)
+  --batch-size BATCH_SIZE
+                        Keys per IWE query (default: 64)
+  --strict              Fail if IWE omits an eligible key
+  -v, --verbose         Progress/debug logs to stderr

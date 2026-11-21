@@ -1,0 +1,10 @@
+# Just is optional; Python and IWE are the only runtime dependencies.
+
+list:
+    @just --list
+
+test:
+    python3 -m unittest discover -s tests -v
+
+report dir="." exclude="archive":
+    python3 iwe_report.py --workspace {{quote(dir)}} --exclude-dir {{quote(exclude)}} --report summary

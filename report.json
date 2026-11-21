@@ -1,0 +1,101 @@
+[
+  {
+    "directory": ".",
+    "files": 32,
+    "headings": 156,
+    "items": 451,
+    "code": 282,
+    "paragraphs": 833,
+    "tables": 31,
+    "lists": 159,
+    "blocks": 1945
+  },
+  {
+    "directory": "console",
+    "files": 2,
+    "headings": 57,
+    "items": 57,
+    "code": 40,
+    "paragraphs": 115,
+    "tables": 27,
+    "lists": 19,
+    "blocks": 317
+  },
+  {
+    "directory": "install",
+    "files": 3,
+    "headings": 7,
+    "items": 16,
+    "code": 10,
+    "paragraphs": 40,
+    "tables": 0,
+    "lists": 8,
+    "blocks": 81
+  },
+  {
+    "directory": "kube-cli",
+    "files": 4,
+    "headings": 15,
+    "items": 74,
+    "code": 56,
+    "paragraphs": 117,
+    "tables": 0,
+    "lists": 28,
+    "blocks": 297
+  },
+  {
+    "directory": "kube-yaml",
+    "files": 6,
+    "headings": 29,
+    "items": 115,
+    "code": 90,
+    "paragraphs": 227,
+    "tables": 4,
+    "lists": 38,
+    "blocks": 516
+  },
+  {
+    "directory": "overview",
+    "files": 7,
+    "headings": 15,
+    "items": 36,
+    "code": 7,
+    "paragraphs": 115,
+    "tables": 0,
+    "lists": 15,
+    "blocks": 190
+  },
+  {
+    "directory": "system-cli",
+    "files": 4,
+    "headings": 12,
+    "items": 50,
+    "code": 44,
+    "paragraphs": 101,
+    "tables": 0,
+    "lists": 19,
+    "blocks": 229
+  },
+  {
+    "directory": "system-yaml",
+    "files": 4,
+    "headings": 9,
+    "items": 25,
+    "code": 22,
+    "paragraphs": 67,
+    "tables": 0,
+    "lists": 10,
+    "blocks": 136
+  },
+  {
+    "directory": "troubleshooting",
+    "files": 1,
+    "headings": 5,
+    "items": 40,
+    "code": 13,
+    "paragraphs": 46,
+    "tables": 0,
+    "lists": 15,
+    "blocks": 122
+  }
+]

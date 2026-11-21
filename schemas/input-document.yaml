@@ -1,0 +1,36 @@
+# Proposed shared baseline, not yet a CI requirement.
+# Scope is enforced by python/validate_input_docs.py: input/**/*.md,
+# excluding every directory named refdog. Links to refdog remain allowed.
+$schema: https://document-schema.org/draft/2026-06/schema
+description: Skupper authored documentation has one title and an introduction.
+
+# Existing metadata is optional. Keep extension fields available to the build.
+frontmatter:
+  type: object
+  properties:
+    type: { const: module }
+    navtitle: { type: string, minLength: 1 }
+    skip: { type: boolean }
+    render_macros: { type: boolean }
+  additionalProperties: true
+
+# Initial policy choices for review, not measurements from the IWE report.
+maxTokens: 8000
+maxDepth: 3
+allSections:
+  header:
+    minLength: 1
+    maxLength: 100
+    description: Use a nonempty heading of at most 100 characters.
+
+sections:
+  - header: { pattern: '.+' }
+    maxContains: 1
+    description: Use exactly one top-level title with an introductory paragraph.
+    blocks:
+      - type: paragraph
+        minContains: 1
+    # Landing pages, concepts, procedures, and references have different sections.
+    additionalSections: true
+    additionalBlocks: true
+additionalSections: false

@@ -1,0 +1,8 @@
+# Skip all directories named 'archive' anywhere in the library:
+archive
+
+# Skip the old v1 subtree relative to the IWE library root:
+old/v1/**
+
+# Skip auto-generated directories by basename:
+*_generated
