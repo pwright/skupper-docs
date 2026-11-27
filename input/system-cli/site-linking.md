@@ -140,7 +140,9 @@ There are many options to consider when linking sites using the CLI, see [CLI Re
    You can now expose services on the application network.
 
 
-   ## Linking a local site through an HTTP proxy[¶](#linking-a-local-site-through-an-http-proxy "Permanent link")
+<a id="system-link-sites-http-proxy"></a>
+## Linking a local site through an HTTP proxy
+<!--PROCEDURE-->
 
 If your network requires routing through an HTTP CONNECT proxy to reach remote sites, you can configure Skupper links on non-Kubernetes (Linux) sites to use a proxy. This feature uses `link` resources with a proxy Secret, allowing the local Skupper router to tunnel inter-site traffic through an HTTP CONNECT proxy.
 
@@ -249,11 +251,10 @@ If the link remains in "Pending" or "Not Operational" status, check:
     skupper system validate <namespace>
     ```
 
-**📌 NOTE** If you update the proxy Secret after the link is established, reload the site configuration to apply the changes:
+**NOTE:** If you update the proxy Secret after the link is established, reload the site configuration to apply the changes:
 
 ```
 skupper system reload <namespace>
 ```
 
-There are many options to consider when linking sites using the CLI, see [CLI Reference][cli-ref], including *frequently used* options.
 
